@@ -6,7 +6,7 @@ interface ChartProps {
 	coinId: string;
 }
 
-interface IHistorycal {
+interface IHistorical {
 	time_open: number;
 	time_close: number;
 	open: string;
@@ -18,7 +18,7 @@ interface IHistorycal {
 }
 
 function Chart({ coinId }: ChartProps) {
-	const { data, isLoading } = useQuery<IHistorycal[]>(
+	const { data, isLoading } = useQuery<IHistorical[]>(
 		["ohlcv", coinId],
 		() => fetchCoinHistory(coinId),
 		{

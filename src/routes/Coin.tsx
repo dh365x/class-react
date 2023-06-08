@@ -11,7 +11,7 @@ import Price from "./Price";
 import Chart from "./Chart";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
 	margin: 0 auto;
@@ -216,7 +216,7 @@ function Coin() {
 					</Tabs>
 					<Switch>
 						<Route path={`/:coinId/price`}>
-							<Price />
+							<Price coinId={coinId} />
 						</Route>
 						<Route path={`/:coinId/chart`}>
 							<Chart coinId={coinId} />

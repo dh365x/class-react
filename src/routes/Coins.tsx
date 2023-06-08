@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCoins } from "../api";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
 	margin: 0 auto;
