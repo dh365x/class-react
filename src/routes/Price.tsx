@@ -4,6 +4,7 @@ import { fetchCoinHistory } from "../api";
 
 interface IProps {
 	coinId: string;
+	isDark: boolean;
 }
 
 interface IHistorical {
@@ -17,7 +18,7 @@ interface IHistorical {
 	market_cap: number;
 }
 
-function Price({ coinId }: IProps) {
+function Price({ coinId, isDark }: IProps) {
 	const { data, isLoading } = useQuery<IHistorical[]>(
 		["price", coinId],
 		() => fetchCoinHistory(coinId),
@@ -52,7 +53,10 @@ function Price({ coinId }: IProps) {
 							height: 300,
 							width: 500,
 							toolbar: { show: false },
-							background: "rgba(0, 0, 0, 0.5)",
+							background: "transparent",
+						},
+						theme: {
+							mode: isDark ? "dark" : "light",
 						},
 						grid: { show: true },
 					}}
