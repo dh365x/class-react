@@ -32,8 +32,9 @@ const Loader = styled.span`
 const Coin = styled.li`
 	margin-bottom: 10px;
 	border-radius: 15px;
-	background-color: white;
-	color: ${(props) => props.theme.bgColor};
+	background-color: ${(props) => props.theme.cardBgColor};
+	border: 1px solid white;
+	color: ${(props) => props.theme.textColor};
 	a {
 		display: flex;
 		align-items: center;

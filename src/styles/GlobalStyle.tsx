@@ -62,8 +62,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-
-    background-color: ${(props) => props.theme.bgColor};
+        background-color: ${(props) => props.theme.bgColor};
     color: ${(props) => props.theme.textColor};
     font-family: 'Noto Sans','Noto Sans KR', sans-serif;
     font-weight: 300;

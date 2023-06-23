@@ -1,22 +1,22 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import Coins from "./routes/Coins";
-import Coin from "./routes/Coin";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./styles/theme";
+import { GlobalStyle } from "./styles/GlobalStyle";
+import Router from "./Router";
+import { useState } from "react";
 
 function App() {
+	const [isDark, setIsDark] = useState(false);
+	const toggleDark = () => setIsDark((current) => !current);
+
 	return (
 		<>
-			<BrowserRouter>
-				<Switch>
-					<Route path="/:coinId">
-						<Coin />
-					</Route>
-					<Route path="/">
-						<Coins />
-					</Route>
-				</Switch>
-			</BrowserRouter>
-			<ReactQueryDevtools initialIsOpen={true} />
+			<ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+				<GlobalStyle />
+				<button onClick={toggleDark}>Toggle Mode</button>
+				<Router />
+				<ReactQueryDevtools initialIsOpen={true} />
+			</ThemeProvider>
 		</>
 	);
 }
