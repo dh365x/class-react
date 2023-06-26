@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
+import { RecoilRoot } from "recoil";
 
 const queryClient = new QueryClient();
 
@@ -11,10 +12,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 	<React.StrictMode>
-		<QueryClientProvider client={queryClient}>
-			<HelmetProvider>
-				<App />
-			</HelmetProvider>
-		</QueryClientProvider>
+		<RecoilRoot>
+			<QueryClientProvider client={queryClient}>
+				<HelmetProvider>
+					<App />
+				</HelmetProvider>
+			</QueryClientProvider>
+		</RecoilRoot>
 	</React.StrictMode>
 );

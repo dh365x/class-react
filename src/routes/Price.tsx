@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import ApexCharts from "react-apexcharts";
 import { fetchCoinHistory } from "../api";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 interface IProps {
 	coinId: string;
-	isDark: boolean;
 }
 
 interface IHistorical {
@@ -18,7 +19,8 @@ interface IHistorical {
 	market_cap: number;
 }
 
-function Price({ coinId, isDark }: IProps) {
+function Price({ coinId }: IProps) {
+	const isDark = useRecoilValue(isDarkAtom);
 	const { data, isLoading } = useQuery<IHistorical[]>(
 		["price", coinId],
 		() => fetchCoinHistory(coinId),
