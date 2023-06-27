@@ -1,5 +1,5 @@
 import React from "react";
-import { IToDo, toDoState } from "../atoms";
+import { Categories, IToDo, toDoState } from "../atoms";
 import { useSetRecoilState } from "recoil";
 
 function ToDo({ id, text, category }: IToDo) {
@@ -22,17 +22,17 @@ function ToDo({ id, text, category }: IToDo) {
 	return (
 		<li>
 			<span>{text}</span>
-			{category !== "DOING" && (
+			{category !== Categories.DOING && (
 				<button name="DOING" onClick={onClick}>
 					Doing
 				</button>
 			)}
-			{category !== "TO_DO" && (
+			{category !== Categories.TO_DO && (
 				<button name="TO_DO" onClick={onClick}>
 					To Do
 				</button>
 			)}
-			{category !== "DONE" && (
+			{category !== Categories.DONE && (
 				<button name="DONE" onClick={onClick}>
 					Done
 				</button>
