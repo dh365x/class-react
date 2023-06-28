@@ -2,6 +2,7 @@ import { Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import DragabbleCard from "./DragabbleCard";
 import { useForm } from "react-hook-form";
+import { ITodo } from "../atoms";
 
 const Wrapper = styled.div`
 	display: flex;
@@ -47,7 +48,7 @@ const Form = styled.form`
 `;
 
 interface IBoardProps {
-	toDos: string[];
+	toDos: ITodo[];
 	boardId: string;
 }
 
@@ -80,7 +81,12 @@ function Board({ toDos, boardId }: IBoardProps) {
 						isDraggingFromThis={Boolean(info.draggingFromThisWith)}
 					>
 						{toDos.map((toDo, index) => (
-							<DragabbleCard key={toDo} index={index} toDo={toDo} />
+							<DragabbleCard
+								key={toDo.id}
+								index={index}
+								toDoId={toDo.id}
+								toDoText={toDo.text}
+							/>
 						))}
 						{magic.placeholder}
 					</Area>
