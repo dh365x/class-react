@@ -27,6 +27,7 @@ function App() {
 	const onDragEnd = (info: DropResult) => {
 		const { draggableId, source, destination } = info;
 
+		if (!destination) return;
 		// same board movement
 		if (destination?.droppableId === source.droppableId) {
 			setToDos((allBoards) => {
@@ -39,7 +40,20 @@ function App() {
 				};
 			});
 		}
-
+		// cress board movement
+		if (destination?.droppableId !== source.droppableId) {
+			setToDos((allboards) => {
+				const sourceBoard = [...allboards[source.droppableId]];
+				const destinatioinBoard = [...allboards[destination?.droppableId]];
+				sourceBoard.splice(source.index, 1);
+				destinatioinBoard.splice(destination?.index, 0, draggableId);
+				return {
+					...allboards,
+					[source.droppableId]: sourceBoard,
+					[destination?.droppableId]: destinatioinBoard,
+				};
+			});
+		}
 		console.log(info);
 	};
 
