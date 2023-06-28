@@ -11,6 +11,7 @@ const Wrapper = styled.div`
 	padding-top: 10px;
 	border-radius: 5px;
 	background-color: ${(props) => props.theme.boardColor};
+	overflow: hidden;
 `;
 
 const Title = styled.h2`
@@ -27,8 +28,13 @@ interface IAreaProps {
 
 const Area = styled.div<IAreaProps>`
 	flex-grow: 1;
+	padding: 20px;
 	background-color: ${(props) =>
-		props.isDragginOver ? "pink" : props.isDraggingFromThis ? "red" : "blue"};
+		props.isDragginOver
+			? "#dfe6e9"
+			: props.isDraggingFromThis
+			? "#b2bec3"
+			: "transparent"};
 	transition: background-color 0.3s ease-in-out;
 `;
 
