@@ -18,7 +18,6 @@ interface IDraggableCardProps {
 }
 
 function DragabbleCard({ toDo, index }: IDraggableCardProps) {
-	console.log(toDo, "has been rendered");
 	return (
 		<Draggable index={index} draggableId={toDo}>
 			{(magic, snapshot) => (
